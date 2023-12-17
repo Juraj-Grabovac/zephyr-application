@@ -244,6 +244,29 @@ static void listener_callback(const struct zbus_channel *chan)
     react_led.increment_sleep_time();
 }
 
+/**
+ * @brief poll gpio input pin
+ *
+ * Function polls the gpio input pin using the poll_gpio class.
+ * If a change occurs on a pin, the new state of the pin is published to zbus_chan.
+ * Function also logs pin change and new pin state
+ */
+static void poll_gpio_input(void)
+{
+    int val;
+
+	while (1) 
+    {
+        val = poll_gpio.check_pin_state_change();
+
+        if(val == 1)
+        {
+            poll_gpio.publish_pin_state();
+
+            LOG_INF("Pin State Changed! New Pin State: %d", poll_gpio.get_pin_state());
+        }
+	}
+}
 
 /**
  * @brief main function
