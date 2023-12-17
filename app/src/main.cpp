@@ -13,6 +13,7 @@
 #include <iostream>
 #include <zephyr/kernel.h>
 #include <zephyr/drivers/gpio.h>
+#include <zephyr/zbus/zbus.h>
 
 using namespace std;
 
@@ -24,6 +25,16 @@ using namespace std;
 /*--------------------------------------------------------------------*/
 /*--------------------------- DEFINITIONS ----------------------------*/
 /*--------------------------------------------------------------------*/
+
+
+/* zbus channel definition */
+ZBUS_CHAN_DEFINE(zbus_chan,         /* Name */
+		 int,                       /* Message type */
+		 NULL,                      /* Validator */
+		 NULL,                      /* User data */
+		 ZBUS_OBSERVERS(listener),  /* observers */
+		 0                          /* Initial value is 0 */
+);
 
 
 /* sleep time = 100 msec */
