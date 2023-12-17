@@ -20,6 +20,9 @@ using namespace std;
 /*--------------------------------------------------------------------*/
 /*------------------- LOCAL FUNCTIONS PROTOTYPES ---------------------*/
 /*--------------------------------------------------------------------*/
+static void blink_led_scheduler(struct k_work *work);
+static void listener_callback(const struct zbus_channel *chan);
+static void poll_gpio_input(void);
 
 
 /*--------------------------------------------------------------------*/
