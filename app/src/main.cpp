@@ -244,6 +244,15 @@ static void listener_callback(const struct zbus_channel *chan)
     react_led.increment_sleep_time();
 }
 
+
+/**
+ * @brief main function
+ *
+ * Function main serves for initialization/configuration of input/output pins 
+ * and also for scheduling the initial sleep time of the LED
+ * 
+ * @return 0 or 1 - 0 if an error occurs during pin initialization/configuration, otherwise 1
+ */
 int main(void)
 {
 	int ret;
