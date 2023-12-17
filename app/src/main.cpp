@@ -39,6 +39,9 @@ ZBUS_CHAN_DEFINE(zbus_chan,         /* Name */
 /* zbus listener definition */
 ZBUS_LISTENER_DEFINE(listener, listener_callback);
 
+/* k_work_delayable definition */
+K_WORK_DELAYABLE_DEFINE(blink_work, blink_led_scheduler);
+
 
 /* sleep time = 100 msec */
 #define INIT_SLEEP_TIME_MS 100
