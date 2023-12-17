@@ -198,6 +198,24 @@ ReactClass react_led;
 /*---------------------------- FUNCTIONS -----------------------------*/
 /*--------------------------------------------------------------------*/
 
+
+/**
+ * @brief zbus listener callback
+ *
+ * Callback is called when a new message appears on zbus named zbus_chan.
+ * Function reads the value from zbus and increases the sleep time of the LED.
+ * 
+ * @param chan - pointer to zbus_channel structure
+ */
+static void listener_callback(const struct zbus_channel *chan)
+{
+	const int *msg = (int *)zbus_chan_const_msg(chan);
+
+    cout << "Listener callback: " << *msg << endl;
+
+    react_led.increment_sleep_time();
+}
+
 int main(void)
 {
 	int ret;
