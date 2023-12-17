@@ -88,6 +88,18 @@ void PollClass::init_pin_state(int state)
     pin_state = state;
 }
 
+/**
+ * @brief retrieves pin state
+ *
+ * Retrieves the pin state of the gpio input pin
+ *
+ * @return pin_state
+ */
+int PollClass::get_pin_state(void)
+{
+    return pin_state;
+}
+
 
 
 /*--------------------------------------------------------------------*/
