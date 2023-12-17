@@ -20,6 +20,12 @@
 /*--------------------------------------------------------------------*/
 
 
+/* Get button configuration from the devicetree sw0 alias. */
+#define SW0_NODE DT_ALIAS(sw0)
+/* A build error on this line means your board is unsupported. */
+static const struct gpio_dt_spec button = GPIO_DT_SPEC_GET_OR(SW0_NODE, gpios,{0});
+
+
 
 /*--------------------------------------------------------------------*/
 /*----------------------------- CLASSES ------------------------------*/
@@ -31,3 +37,25 @@
 /*---------------------------- FUNCTIONS -----------------------------*/
 /*--------------------------------------------------------------------*/
 
+int main(void)
+{
+	int ret;
+
+    if (!gpio_is_ready_dt(&button)) 
+    {
+        printk("Error: button device %s is not ready\n",
+                button.port->name);
+        return 0;
+	}
+
+	ret = gpio_pin_configure_dt(&button, GPIO_INPUT);
+	if (ret != 0) 
+    {
+		printk("Error %d: failed to configure %s pin %d\n",
+		       ret, button.port->name, button.pin);
+		return 0;
+	}
+
+
+	return 1;
+}
