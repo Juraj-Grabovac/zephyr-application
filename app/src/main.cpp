@@ -35,6 +35,22 @@ static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(LED0_NODE, gpios);
 /*----------------------------- CLASSES ------------------------------*/
 /*--------------------------------------------------------------------*/
 
+/**
+ * @class PollClass - poll the gpio input pin
+ */
+class PollClass {
+private:
+    //attributes
+    int pin_state; 
+
+public:
+    //methods
+    void init_pin_state(int);
+    int get_pin_state(void);
+    int check_pin_state_change(void);
+    void publish_pin_state(void);
+};
+
 
 
 /*--------------------------------------------------------------------*/
