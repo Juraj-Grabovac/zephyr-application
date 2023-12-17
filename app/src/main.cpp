@@ -175,6 +175,9 @@ int ReactClass::get_sleep_time(void)
     return sleep_time;
 }
 
+/* Created classes for blinking LEDs and GPIO polling */
+PollClass poll_gpio;
+ReactClass react_led;
 
 
 /*--------------------------------------------------------------------*/
