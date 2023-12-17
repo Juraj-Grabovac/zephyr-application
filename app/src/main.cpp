@@ -42,6 +42,14 @@ ZBUS_LISTENER_DEFINE(listener, listener_callback);
 /* k_work_delayable definition */
 K_WORK_DELAYABLE_DEFINE(blink_work, blink_led_scheduler);
 
+/* size of stack area used by thread */
+#define STACKSIZE 1024
+
+/* scheduling priority used by thread */
+#define PRIORITY 7
+
+/* poll_gpio_input_id thread definition */
+K_THREAD_DEFINE(poll_gpio_input_id, STACKSIZE, poll_gpio_input, NULL, NULL, NULL, PRIORITY, 0, 0);
 
 /* sleep time = 100 msec */
 #define INIT_SLEEP_TIME_MS 100
