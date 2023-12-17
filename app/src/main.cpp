@@ -274,6 +274,7 @@ int main(void)
 		return 0;
 	}
 
+    poll_gpio.init_pin_state(gpio_pin_get_dt(&button));
 
     k_work_schedule(&blink_work, K_MSEC(react_led.get_sleep_time()));
 
