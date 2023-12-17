@@ -25,6 +25,10 @@
 /* A build error on this line means your board is unsupported. */
 static const struct gpio_dt_spec button = GPIO_DT_SPEC_GET_OR(SW0_NODE, gpios,{0});
 
+/* The devicetree node identifier for the "led0" alias. */
+#define LED0_NODE DT_ALIAS(led0)
+/* A build error on this line means your board is unsupported. */
+static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(LED0_NODE, gpios);
 
 
 /*--------------------------------------------------------------------*/
@@ -53,6 +57,17 @@ int main(void)
     {
 		printk("Error %d: failed to configure %s pin %d\n",
 		       ret, button.port->name, button.pin);
+		return 0;
+	}
+
+	if (!gpio_is_ready_dt(&led)) 
+    {
+		return 0;
+	}
+
+	ret = gpio_pin_configure_dt(&led, GPIO_OUTPUT);
+	if (ret < 0) 
+    {
 		return 0;
 	}
 
