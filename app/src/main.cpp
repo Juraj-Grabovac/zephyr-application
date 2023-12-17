@@ -13,6 +13,9 @@
 #include <iostream>
 #include <zephyr/kernel.h>
 #include <zephyr/drivers/gpio.h>
+
+using namespace std;
+
 /*--------------------------------------------------------------------*/
 /*------------------- LOCAL FUNCTIONS PROTOTYPES ---------------------*/
 /*--------------------------------------------------------------------*/
