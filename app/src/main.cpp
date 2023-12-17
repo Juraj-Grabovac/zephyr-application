@@ -135,6 +135,22 @@ void PollClass::publish_pin_state(void)
     zbus_chan_pub(&zbus_chan, &(pin_state), K_SECONDS(1));
 }
 
+/**
+ * @brief blink led
+ *
+ * Toggles LED to blink
+ *
+ * @return ret - less than 0 when toggling is unsuccessful, otherwise greater or equal to 0
+ */
+int ReactClass::blink_led (void)
+{
+    int ret;
+
+    ret = gpio_pin_toggle_dt(&led);
+
+    return ret;
+}
+
 
 
 /*--------------------------------------------------------------------*/
