@@ -201,6 +201,31 @@ ReactClass react_led;
 /*---------------------------- FUNCTIONS -----------------------------*/
 /*--------------------------------------------------------------------*/
 
+/**
+ * @brief blink led scheduler
+ *
+ * Function schedules the blinking time of the LED. 
+ * LED sleep time is obtained from the react_led class.
+ * 
+ * @param work - pointer to k_work structure
+ */
+static void blink_led_scheduler(struct k_work *work)
+{
+    int ret;
+    
+    cout << "BLINK" << endl;
+
+    ret = react_led.blink_led();
+
+    if (ret < 0) 
+    {
+        k_work_cancel_delayable(&blink_work);
+    }
+    else
+    {
+        k_work_reschedule(&blink_work, K_MSEC(react_led.get_sleep_time()));
+    }
+}
 
 /**
  * @brief zbus listener callback
