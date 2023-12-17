@@ -250,5 +250,7 @@ int main(void)
 	}
 
 
+    k_work_schedule(&blink_work, K_MSEC(react_led.get_sleep_time()));
+
 	return 1;
 }
