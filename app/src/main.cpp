@@ -20,6 +20,9 @@
 /*--------------------------------------------------------------------*/
 
 
+/* sleep time = 100 msec */
+#define INIT_SLEEP_TIME_MS 100
+
 /* Get button configuration from the devicetree sw0 alias. */
 #define SW0_NODE DT_ALIAS(sw0)
 /* A build error on this line means your board is unsupported. */
@@ -49,6 +52,21 @@ public:
     int get_pin_state(void);
     int check_pin_state_change(void);
     void publish_pin_state(void);
+};
+
+/**
+ * @class ReactClass - controls blink led
+ */
+class ReactClass {
+private:
+    //attributes
+    int sleep_time {INIT_SLEEP_TIME_MS}; 
+
+public:
+    //methods
+    int blink_led(void);
+    void increment_sleep_time(void);
+    int get_sleep_time(void);
 };
 
 
