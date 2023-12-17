@@ -75,6 +75,19 @@ public:
     int get_sleep_time(void);
 };
 
+/**
+ * @brief initializes pin state
+ *
+ * Initializes the pin_state attribute of the PollClass to the state of the input gpio pin
+ * 
+ * @param state - gpio input pin state
+ */
+void PollClass::init_pin_state(int state)
+{
+    cout << "Pin state init: " << state << endl;
+    pin_state = state;
+}
+
 
 
 /*--------------------------------------------------------------------*/
