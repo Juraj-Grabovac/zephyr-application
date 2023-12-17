@@ -14,6 +14,7 @@
 #include <zephyr/kernel.h>
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/zbus/zbus.h>
+#include <zephyr/logging/log.h>
 
 using namespace std;
 
@@ -29,6 +30,8 @@ static void poll_gpio_input(void);
 /*--------------------------- DEFINITIONS ----------------------------*/
 /*--------------------------------------------------------------------*/
 
+/* module log registration */
+LOG_MODULE_REGISTER(main);
 
 /* zbus channel definition */
 ZBUS_CHAN_DEFINE(zbus_chan,         /* Name */
