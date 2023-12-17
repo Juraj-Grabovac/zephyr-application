@@ -151,6 +151,18 @@ int ReactClass::blink_led (void)
     return ret;
 }
 
+/**
+ * @brief increment sleep time
+ *
+ * Increases the sleep time of the LED by 100ms
+ */
+void ReactClass::increment_sleep_time (void)
+{
+    sleep_time += 100;
+
+    cout << "New sleep time: " << sleep_time << " ms" << endl;
+}
+
 
 
 /*--------------------------------------------------------------------*/
