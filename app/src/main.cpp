@@ -100,6 +100,30 @@ int PollClass::get_pin_state(void)
     return pin_state;
 }
 
+/**
+ * @brief check pin state change
+ *
+ * Checks if there is a change on the input gpio pin
+ *
+ * @return ret_val - 0 if there is no change on input gpio pin, otherwise 1
+ */
+int PollClass::check_pin_state_change(void)
+{
+    int new_pin_state;
+    int ret_val = 0;
+
+    new_pin_state = gpio_pin_get_dt(&button);
+
+    if(new_pin_state != pin_state)
+    {
+        cout << "New pin state: " << new_pin_state << endl;
+        pin_state = new_pin_state;
+        ret_val = 1;
+    }
+
+    return ret_val;
+}
+
 
 
 /*--------------------------------------------------------------------*/
