@@ -36,6 +36,9 @@ ZBUS_CHAN_DEFINE(zbus_chan,         /* Name */
 		 0                          /* Initial value is 0 */
 );
 
+/* zbus listener definition */
+ZBUS_LISTENER_DEFINE(listener, listener_callback);
+
 
 /* sleep time = 100 msec */
 #define INIT_SLEEP_TIME_MS 100
