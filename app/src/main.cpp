@@ -163,6 +163,18 @@ void ReactClass::increment_sleep_time (void)
     cout << "New sleep time: " << sleep_time << " ms" << endl;
 }
 
+/**
+ * @brief retrieves sleep time
+ *
+ * Retrieves the sleep time of the LED
+ *
+ * @return sleep_time - sleep time of the LED
+ */
+int ReactClass::get_sleep_time(void)
+{
+    return sleep_time;
+}
+
 
 
 /*--------------------------------------------------------------------*/
