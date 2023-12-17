@@ -124,6 +124,17 @@ int PollClass::check_pin_state_change(void)
     return ret_val;
 }
 
+/**
+ * @brief publish pin state
+ *
+ * Publishes pin_state on zbus named zbus_chan
+ */
+void PollClass::publish_pin_state(void)
+{
+    cout << "Publish pin state: " << pin_state << endl;
+    zbus_chan_pub(&zbus_chan, &(pin_state), K_SECONDS(1));
+}
+
 
 
 /*--------------------------------------------------------------------*/
